@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply bg-surface text-on-surface m-0 p-0;
+    font-family: 'Inter', ui-sans-serif, system-ui;
+  }
+
+  #app {
+    @apply min-h-screen;
+  }
+}
+
+@layer utilities {
+  .text-gradient-primary {
+    background: linear-gradient(135deg, #c0c1ff, #8083ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #c0c1ff, #8083ff);
+  }
+
+  .glass-nav {
+    background: rgba(53, 53, 52, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .frosted-slate {
+    background: rgba(60, 74, 94, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .ghost-border {
+    border: 1px solid rgba(70, 69, 84, 0.2);
+  }
+}
