@@ -65,7 +65,7 @@ withDefaults(defineProps<{ entry: LogPlainEntry; last?: boolean }>(), { last: fa
 
       <!-- Node -->
       <div class="absolute left-4 md:left-1/2 top-2 md:-translate-x-1/2 z-10">
-        <div class="w-3 h-3 bg-surface border-2 border-primary rounded-full ring-4 ring-primary/5 group-hover:bg-primary group-hover:shadow-[0_0_20px_rgba(99,102,241,0.6)] transition-all duration-300" />
+        <div class="w-3 h-3 bg-surface border-2 border-primary rounded-full ring-4 ring-primary/5 group-hover:bg-primary transition-all duration-300 node-pulse-primary" />
       </div>
 
       <!-- Year RIGHT (side === 'left' 일 때) -->

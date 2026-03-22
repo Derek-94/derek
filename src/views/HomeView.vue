@@ -43,6 +43,7 @@ const timelineItems = [
     side:        'left',
     nodeClass:   'bg-tertiary ring-4 ring-tertiary/20 shadow-[0_0_15px_rgba(76,215,246,0.4)]',
     dimClass:    '',
+    pulse:       true,
   },
   {
     period:      '2026 — INNOVATION',
@@ -53,6 +54,7 @@ const timelineItems = [
     side:        'right',
     nodeClass:   'bg-primary ring-4 ring-primary/20 shadow-[0_0_15px_rgba(192,193,255,0.4)]',
     dimClass:    '',
+    pulse:       true,
   },
   {
     period:      '2024 — EXPANSION',
@@ -63,6 +65,7 @@ const timelineItems = [
     side:        'left',
     nodeClass:   'bg-outline-variant ring-4 ring-outline-variant/10',
     dimClass:    'opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all',
+    pulse:       false,
   },
   {
     period:      '2022 — GENESIS',
@@ -73,6 +76,7 @@ const timelineItems = [
     side:        'right',
     nodeClass:   'bg-outline-variant/50 ring-4 ring-outline-variant/5',
     dimClass:    'opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all',
+    pulse:       false,
   },
 ]
 
@@ -133,17 +137,17 @@ const ctaSection = {
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
           <!-- Left: 8 cols -->
           <div class="lg:col-span-8 z-10">
-            <span class="font-mono text-tertiary uppercase tracking-widest text-sm mb-4 block" style="text-shadow: 0 0 15px rgba(76,215,246,0.4)">
+            <span class="font-mono text-tertiary uppercase tracking-widest text-sm mb-4 block animate-fade-up" style="text-shadow: 0 0 15px rgba(76,215,246,0.4)">
               {{ hero.kicker }}
             </span>
-            <h1 class="font-sans text-4xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
+            <h1 class="font-sans text-4xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8 animate-fade-up delay-1">
               {{ hero.headline }}<br>
               <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary">{{ hero.headlineAccent }}</span>
             </h1>
-            <p class="text-on-surface-variant text-lg md:text-xl max-w-2xl font-light mb-10 leading-relaxed">
+            <p class="text-on-surface-variant text-lg md:text-xl max-w-2xl font-light mb-10 leading-relaxed animate-fade-up delay-2">
               {{ hero.subtext }}
             </p>
-            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-wrap gap-4 animate-fade-up delay-3">
               <a
                 :href="hero.ctaPrimary.href"
                 class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded font-mono font-bold uppercase tracking-wider hover:brightness-110 transition-all flex items-center gap-2"
@@ -247,7 +251,7 @@ const ctaSection = {
               </div>
               <div
                 class="absolute left-4 md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full"
-                :class="item.nodeClass"
+                :class="[item.nodeClass, item.pulse ? 'node-pulse' : '']"
               />
             </div>
           </div>

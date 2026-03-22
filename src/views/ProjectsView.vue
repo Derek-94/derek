@@ -82,12 +82,12 @@ const challenges = [
     <!-- ─── HERO ───────────────────────────────────────────────── -->
     <section class="pt-32 pb-16 lg:pt-40 lg:pb-20">
       <div class="max-w-7xl mx-auto px-6 lg:px-12">
-        <span class="font-mono text-tertiary text-sm tracking-widest uppercase mb-4 block">Selected Artifacts</span>
+        <span class="font-mono text-tertiary text-sm tracking-widest uppercase mb-4 block animate-fade-up">Selected Artifacts</span>
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-          <h1 class="font-sans text-4xl md:text-8xl font-black tracking-tighter text-on-surface">
+          <h1 class="font-sans text-4xl md:text-8xl font-black tracking-tighter text-on-surface animate-fade-up delay-1">
             Featured<br />Projects
           </h1>
-          <p class="text-on-surface-variant text-base leading-relaxed max-w-md lg:text-right">
+          <p class="text-on-surface-variant text-base leading-relaxed max-w-md lg:text-right animate-fade-up delay-2">
             High-performance engineering challenges focused on scalability,
             precise UI execution, and modern architectural patterns.
           </p>

@@ -11,7 +11,7 @@ const iconSize = props.entry.placeholderIconSize ?? '5rem'
 
     <!-- Mobile node (항상 최상단) -->
     <div class="md:hidden flex items-center gap-4 mb-4">
-      <div class="w-3 h-3 rounded-full bg-tertiary shadow-[0_0_15px_rgba(76,215,246,0.4)]"></div>
+      <div class="w-3 h-3 rounded-full bg-tertiary node-pulse"></div>
       <span class="font-mono text-tertiary text-xs font-bold tracking-widest uppercase">{{ mobilePeriod }}</span>
     </div>
 
@@ -26,7 +26,7 @@ const iconSize = props.entry.placeholderIconSize ?? '5rem'
 
     <!-- Desktop node (spine 중앙) -->
     <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center justify-center">
-      <div class="w-4 h-4 rounded-full bg-tertiary shadow-[0_0_15px_rgba(76,215,246,0.4)] border-4 border-surface-dim"></div>
+      <div class="w-4 h-4 rounded-full bg-tertiary border-4 border-surface-dim node-pulse"></div>
     </div>
 
     <!-- Text -->

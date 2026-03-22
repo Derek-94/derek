@@ -74,11 +74,11 @@ const skills: Skill[] = [
 
         <!-- Left: Text -->
         <div class="md:col-span-8">
-          <span class="font-mono text-tertiary text-sm tracking-widest uppercase block mb-4">{{ hero.kicker }}</span>
-          <h1 class="font-sans text-4xl md:text-8xl font-black tracking-tighter leading-none mb-8">
+          <span class="font-mono text-tertiary text-sm tracking-widest uppercase block mb-4 animate-fade-up">{{ hero.kicker }}</span>
+          <h1 class="font-sans text-4xl md:text-8xl font-black tracking-tighter leading-none mb-8 animate-fade-up delay-1">
             {{ hero.headlineMain }} <span class="text-primary">{{ hero.headlineAccent }}</span> {{ hero.headlineSuffix }}
           </h1>
-          <p class="text-xl md:text-2xl text-on-surface-variant font-light leading-relaxed max-w-3xl">
+          <p class="text-xl md:text-2xl text-on-surface-variant font-light leading-relaxed max-w-3xl animate-fade-up delay-2">
             {{ hero.subtext }}
           </p>
         </div>
