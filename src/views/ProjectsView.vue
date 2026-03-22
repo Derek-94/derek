@@ -82,7 +82,7 @@ const challenges = [
     <!-- ─── HERO ───────────────────────────────────────────────── -->
     <section class="pt-32 pb-16 lg:pt-40 lg:pb-20">
       <div class="max-w-7xl mx-auto px-6 lg:px-12">
-        <p class="font-mono text-tertiary text-xs tracking-widest uppercase mb-4">Selected Artifacts</p>
+        <span class="font-mono text-tertiary text-sm tracking-widest uppercase mb-4 block">Selected Artifacts</span>
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <h1 class="font-sans text-4xl md:text-8xl font-black tracking-tighter text-on-surface">
             Featured<br />Projects
@@ -112,8 +112,8 @@ const challenges = [
     <section class="py-section bg-surface-container-low">
       <div class="max-w-7xl mx-auto px-6 lg:px-12">
         <div class="mb-12">
-          <p class="font-mono text-tertiary text-xs tracking-widest uppercase mb-3">Deep Dives</p>
-          <h2 class="font-sans text-4xl lg:text-5xl font-bold tracking-tight text-on-surface">
+          <span class="font-mono text-tertiary text-sm tracking-widest uppercase mb-4 block">Deep Dives</span>
+          <h2 class="font-sans text-4xl lg:text-5xl font-black tracking-tighter text-on-surface">
             Engineering Challenges
           </h2>
         </div>
@@ -142,8 +142,8 @@ const challenges = [
     <!-- ─── CTA ────────────────────────────────────────────────── -->
     <section class="py-section">
       <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-        <p class="font-mono text-tertiary text-xs tracking-widest uppercase mb-4">What's next</p>
-        <h2 class="font-sans text-4xl lg:text-5xl font-bold tracking-tight text-on-surface mb-6">
+        <span class="font-mono text-tertiary text-sm tracking-widest uppercase mb-4 block">What's next</span>
+        <h2 class="font-sans text-4xl lg:text-5xl font-black tracking-tighter text-on-surface mb-6">
           Want the full picture?
         </h2>
         <p class="text-on-surface-variant leading-relaxed mb-10 max-w-md mx-auto">

@@ -202,8 +202,8 @@ const ctaSection = {
       <!-- ─── TIMELINE ───────────────────────────────────────────── -->
       <section class="py-16 px-8 max-w-7xl mx-auto relative" id="timeline">
         <div class="flex flex-col items-center mb-24">
-          <span class="font-mono text-tertiary text-xs tracking-widest uppercase mb-2">{{ timelineSection.kicker }}</span>
-          <h2 class="font-sans text-4xl font-bold tracking-tighter uppercase">{{ timelineSection.heading }}</h2>
+          <span class="font-mono text-tertiary text-sm tracking-widest uppercase mb-4 block">{{ timelineSection.kicker }}</span>
+          <h2 class="font-sans text-4xl font-black tracking-tighter uppercase">{{ timelineSection.heading }}</h2>
         </div>
 
         <div class="relative">
@@ -258,8 +258,8 @@ const ctaSection = {
       <section class="py-16 px-8 max-w-7xl mx-auto" id="projects">
         <div class="flex justify-between items-end mb-16">
           <div>
-            <span class="font-mono text-tertiary text-xs tracking-widest uppercase mb-2 block">{{ projectsSection.kicker }}</span>
-            <h2 class="font-sans text-4xl font-bold tracking-tighter uppercase">{{ projectsSection.heading }}</h2>
+            <span class="font-mono text-tertiary text-sm tracking-widest uppercase mb-4 block">{{ projectsSection.kicker }}</span>
+            <h2 class="font-sans text-4xl font-black tracking-tighter uppercase">{{ projectsSection.heading }}</h2>
           </div>
           <div class="hidden md:block">
             <p class="font-mono text-xs text-outline tracking-tight uppercase">

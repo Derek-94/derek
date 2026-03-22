@@ -144,7 +144,7 @@ const bento = {
 
       <!-- ─── HEADER ──────────────────────────────────────────── -->
       <header class="mb-24">
-        <span class="font-mono text-tertiary text-xs tracking-widest uppercase mb-4 block">{{ header.kicker }}</span>
+        <span class="font-mono text-tertiary text-sm tracking-widest uppercase mb-4 block">{{ header.kicker }}</span>
         <h1 class="font-sans text-4xl md:text-8xl font-black tracking-tighter leading-none mb-8">
           {{ header.headline[0] }}<br/>
           {{ header.headline[1] }}

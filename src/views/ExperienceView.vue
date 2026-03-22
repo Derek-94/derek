@@ -74,7 +74,7 @@ const skills: Skill[] = [
 
         <!-- Left: Text -->
         <div class="md:col-span-8">
-          <span class="font-mono text-tertiary text-sm tracking-[0.2em] uppercase block mb-4">{{ hero.kicker }}</span>
+          <span class="font-mono text-tertiary text-sm tracking-widest uppercase block mb-4">{{ hero.kicker }}</span>
           <h1 class="font-sans text-4xl md:text-8xl font-black tracking-tighter leading-none mb-8">
             {{ hero.headlineMain }} <span class="text-primary">{{ hero.headlineAccent }}</span> {{ hero.headlineSuffix }}
           </h1>
@@ -100,7 +100,7 @@ const skills: Skill[] = [
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
         <div class="flex items-center gap-4 mb-16">
-          <span class="font-mono text-tertiary text-sm tracking-[0.2em] uppercase">Chronicle</span>
+          <span class="font-mono text-tertiary text-sm tracking-widest uppercase">Chronicle</span>
           <div class="h-px flex-1 bg-outline-variant/20"></div>
         </div>
 
@@ -124,7 +124,7 @@ const skills: Skill[] = [
 
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
         <div>
-          <span class="font-mono text-tertiary text-sm tracking-[0.2em] uppercase block mb-4">{{ toolkitSection.kicker }}</span>
+          <span class="font-mono text-tertiary text-sm tracking-widest uppercase block mb-4">{{ toolkitSection.kicker }}</span>
           <h2 class="font-sans text-4xl md:text-5xl font-black tracking-tighter">
             {{ toolkitSection.heading }} <span class="text-primary">{{ toolkitSection.headingAccent }}</span>
           </h2>
