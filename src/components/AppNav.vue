@@ -29,9 +29,12 @@ const navLinks = [
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div class="flex items-center justify-between h-16 lg:h-20">
         <!-- Logo -->
-        <RouterLink to="/" class="flex items-center gap-2">
-          <span class="font-mono text-tertiary text-xs tracking-widest">//</span>
-          <span class="font-sans font-semibold text-on-surface tracking-tight">Kinetic Architect</span>
+        <RouterLink to="/" class="flex items-center gap-1.5">
+          <span class="font-mono text-tertiary text-sm tracking-widest">›_</span>
+          <span
+            class="font-mono font-bold text-on-surface tracking-widest uppercase text-sm"
+            style="text-shadow: 0 0 20px rgba(99, 102, 241, 0.45)"
+          >DEREK</span>
         </RouterLink>
 
         <!-- Desktop Nav -->
