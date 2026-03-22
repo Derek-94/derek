@@ -1,6 +1,6 @@
 <template>
-  <footer class="bg-surface-container-lowest border-t border-outline-variant/20 py-12 px-6 lg:px-12">
-    <div class="max-w-7xl mx-auto">
+  <footer class="bg-surface-container-lowest border-t border-outline-variant/20 py-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <!-- Logo -->
         <div class="flex items-center gap-1.5">
