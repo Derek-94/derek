@@ -91,7 +91,7 @@ import AppFooter from '../components/AppFooter.vue'
       </section>
 
       <!-- ─── TIMELINE ───────────────────────────────────────────── -->
-      <section class="py-32 px-8 max-w-7xl mx-auto relative" id="timeline">
+      <section class="py-16 px-8 max-w-7xl mx-auto relative" id="timeline">
         <div class="flex flex-col items-center mb-24">
           <span class="font-mono text-tertiary text-xs tracking-widest uppercase mb-2">The Trajectory</span>
           <h2 class="font-sans text-4xl font-bold tracking-tighter uppercase">Evolution Spine</h2>
@@ -162,7 +162,7 @@ import AppFooter from '../components/AppFooter.vue'
       </section>
 
       <!-- ─── PROJECTS ───────────────────────────────────────────── -->
-      <section class="py-32 px-8 max-w-7xl mx-auto" id="projects">
+      <section class="py-16 px-8 max-w-7xl mx-auto" id="projects">
         <div class="flex justify-between items-end mb-16">
           <div>
             <span class="font-mono text-tertiary text-xs tracking-widest uppercase mb-2 block">Featured Work</span>
@@ -234,7 +234,7 @@ import AppFooter from '../components/AppFooter.vue'
       </section>
 
       <!-- ─── CTA ────────────────────────────────────────────────── -->
-      <section class="py-32 px-8 max-w-7xl mx-auto">
+      <section class="py-16 px-8 max-w-7xl mx-auto">
         <div class="bg-gradient-to-br from-surface-container-low to-surface-container-lowest p-12 md:p-24 rounded-3xl border border-outline-variant/10 relative overflow-hidden text-center">
           <!-- Ambient glows -->
           <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] pointer-events-none" />
