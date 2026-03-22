@@ -40,11 +40,17 @@ const navLinks = [
             v-for="link in navLinks"
             :key="link.to"
             :to="link.to"
-            class="font-mono text-sm transition-colors"
+            class="font-mono text-sm transition-colors relative pb-1.5"
             :class="route.path === link.to
-              ? 'text-on-surface'
+              ? 'text-primary'
               : 'text-on-surface-variant hover:text-on-surface'"
-          >{{ link.label }}</RouterLink>
+          >
+            {{ link.label }}
+            <span
+              v-if="route.path === link.to"
+              class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-tertiary shadow-[0_0_8px_rgba(76,215,246,0.7)]"
+            />
+          </RouterLink>
           <a
             href="mailto:hello@kinetic.arch"
             class="bg-gradient-primary text-on-primary text-sm font-medium px-5 py-2 rounded-md transition-opacity hover:opacity-90"
@@ -93,12 +99,20 @@ const navLinks = [
             v-for="link in navLinks"
             :key="link.to"
             :to="link.to"
-            class="font-mono text-sm transition-colors"
+            class="font-mono text-sm transition-colors flex items-center gap-2"
             :class="route.path === link.to
-              ? 'text-on-surface'
+              ? 'text-primary'
               : 'text-on-surface-variant hover:text-on-surface'"
             @click="isMobileMenuOpen = false"
-          >{{ link.label }}</RouterLink>
+          >
+            <span
+              class="w-1 h-1 rounded-full transition-all duration-300"
+              :class="route.path === link.to
+                ? 'bg-tertiary shadow-[0_0_8px_rgba(76,215,246,0.7)]'
+                : 'bg-transparent'"
+            />
+            {{ link.label }}
+          </RouterLink>
           <a
             href="mailto:hello@kinetic.arch"
             class="bg-gradient-primary text-on-primary text-sm font-medium px-5 py-2.5 rounded-md text-center"
