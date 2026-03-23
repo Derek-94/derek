@@ -205,17 +205,37 @@ watch(slug, (s) => {
   border-radius: 0.2rem;
 }
 
-/* 리스트 */
-.post-content :deep(ul),
+/* 리스트 — padding-left 제거해서 p/pre/table 과 왼쪽 정렬 맞춤 */
+.post-content :deep(ul) {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+  margin-bottom: 1.5rem;
+  color: #c7c4d7;
+}
+
 .post-content :deep(ol) {
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
   margin-bottom: 1.5rem;
   color: #c7c4d7;
 }
 
 .post-content :deep(li) {
-  margin-bottom: 0.5rem;
-  line-height: 1.7;
+  display: flex;
+  gap: 0.625rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.75;
+}
+
+/* primary 컬러 작은 불릿 마커 */
+.post-content :deep(ul li)::before {
+  content: '';
+  flex-shrink: 0;
+  width: 0.3rem;
+  height: 0.3rem;
+  margin-top: 0.65em;
+  background: #c0c1ff;
+  border-radius: 50%;
 }
 
 /* ── Syntax Highlighting — Dracula Theme ──────────────────── */
