@@ -8,16 +8,16 @@ withDefaults(defineProps<{ entry: LogProgressEntry; last?: boolean }>(), { last:
   <section class="group relative" :class="{ 'mb-32': !last }">
     <div class="grid md:grid-cols-2 gap-12 items-start">
 
-      <!-- Year LEFT (side === 'right' 일 때) -->
+      <!-- Year LEFT (side === 'right' 일 때) — div는 항상 유지해야 grid 레이아웃이 유지됨 -->
       <div v-if="entry.side === 'right'" class="hidden md:flex md:pr-16 flex-row-reverse items-baseline gap-4">
-        <span class="text-7xl md:text-9xl font-black text-on-surface/10 tracking-tighter leading-none select-none group-hover:text-on-surface/30 transition-opacity">
+        <span v-if="!entry.hideYear" class="text-7xl md:text-9xl font-black text-on-surface/10 tracking-tighter leading-none select-none group-hover:text-on-surface/30 transition-opacity">
           {{ entry.year }}
         </span>
       </div>
 
       <!-- Content -->
       <div :class="entry.side === 'left' ? 'md:pr-16 ml-12 md:ml-0' : 'md:pl-16 ml-12 md:ml-0'">
-        <span class="md:hidden font-black text-4xl tracking-tighter text-on-surface/40 mb-3 block">{{ entry.year }}</span>
+        <span v-if="!entry.hideYear" class="md:hidden font-black text-4xl tracking-tighter text-on-surface/40 mb-3 block">{{ entry.year }}</span>
         <div class="inline-flex items-center gap-2 mb-2">
           <span class="material-symbols-outlined text-primary text-sm">{{ entry.icon }}</span>
           <span class="font-mono text-primary text-xs tracking-widest uppercase font-bold">{{ entry.label }}</span>

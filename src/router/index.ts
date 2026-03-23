@@ -24,5 +24,10 @@ export const router = createRouter({
       name: 'logbook',
       component: () => import('../views/LogbookView.vue'),
     },
+    {
+      path: '/logbook/:slug',
+      name: 'logbook-detail',
+      component: () => import('../views/LogbookDetailView.vue'),
+    },
   ],
 })

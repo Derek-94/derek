@@ -53,6 +53,11 @@ No drop shadows. Use **Tonal Layering** and **Ambient Glows** only.
 - **Node:** `bg-tertiary rounded-full shadow-[0_0_15px_rgba(76,215,246,0.4)]`
 - **Content:** Staggered left/right asymmetrically
 
+#### Timeline `side` 값 규칙 (MUST FOLLOW)
+- `side: 'right'` → **year 숫자가 LEFT 컬럼**, **content가 RIGHT 컬럼**
+- `side: 'left'`  → **year 숫자가 RIGHT 컬럼**, **content가 LEFT 컬럼**
+- `hideYear: true` 옵션 사용 시 year 텍스트만 숨기고 **컬럼 div는 반드시 유지** (grid 레이아웃 붕괴 방지)
+
 ## 6. Do's and Don'ts
 
 ### Do:

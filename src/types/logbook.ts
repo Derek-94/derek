@@ -19,6 +19,8 @@ export interface LogProgressEntry {
   type: 'progress'
   year: string
   side: 'left' | 'right'
+  /** true면 연도 숫자 컬럼을 렌더링하지 않음 (같은 year 엔트리가 연속될 때 사용) */
+  hideYear?: boolean
   icon: string
   label: string
   title: string
@@ -39,12 +41,16 @@ export interface LogGridCard {
   category: string
   title: string
   desc: string
+  /** 포스트 slug — 있으면 클릭 가능한 링크 카드로 렌더링 */
+  slug?: string
 }
 
 export interface LogGridEntry {
   type: 'grid'
   year: string
   side: 'left' | 'right'
+  /** true면 연도 숫자 컬럼을 렌더링하지 않음 */
+  hideYear?: boolean
   cards: LogGridCard[]
 }
 

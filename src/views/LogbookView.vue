@@ -28,11 +28,33 @@ const logEntries: LogEntry[] = [
     commit: { icon: 'commit', text: 'feat: core-bridge-v2' },
   },
 
+  // ── 2025: grid (refactoring posts), content RIGHT ──────────
+  {
+    type: 'grid',
+    year: '2025',
+    side: 'right',
+    cards: [
+      {
+        category: 'Refactoring · MR !427 !447 !458',
+        title: '게임 약관 초기화 로직 리팩토링',
+        desc: '416줄 단일 함수 → Orchestrator + 4 Services. 200줄 switch-case → Strategy + Factory Pattern.',
+        slug: 'game-terms-init-refactor',
+      },
+      {
+        category: 'Refactoring · MR !461',
+        title: '라우팅 로직 리팩토링: 순수 함수 분리',
+        desc: '108줄 if-else → Strategy Pattern + 순수 함수 분리. 컴포넌트 의존성 제거.',
+        slug: 'renewal-simplify-routing-refactor',
+      },
+    ],
+  },
+
   // ── 2025: progress, content RIGHT ──────────────────────────
   {
-    type:  'progress',
-    year:  '2025',
-    side:  'right',
+    type:     'progress',
+    year:     '2025',
+    side:     'right',
+    hideYear: true,
     icon:  'rocket_launch',
     label: 'Platform Deployment',
     title: 'Creators Site Launch',
