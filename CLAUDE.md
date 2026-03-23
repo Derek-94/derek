@@ -66,3 +66,30 @@ No drop shadows. Use **Tonal Layering** and **Ambient Glows** only.
 - **DON'T** use undefined utility classes like `font-headline` or `font-label`
 - **DON'T** use pure black (#000) or pure white (#FFF)
 - **DON'T** use heavy shadows
+
+---
+
+## 7. Next Task: Logbook 상세 페이지 구현
+
+### 배경
+GitLab 사내망에서만 접근 가능한 MR 작업 이력을 포트폴리오로 공개하기 위해,
+Logbook에 MD 기반 상세 페이지를 추가한다.
+
+### 결정 사항
+- MD 파일 위치: `src/posts/*.md`
+- 라우트: `/logbook/:slug`
+- 렌더링 방식: `vite-plugin-md` 사용 (`.md` → Vue 컴포넌트로 import)
+- UX: 팝업 X, 별도 상세 페이지 O
+
+### 구현 체크리스트
+- [ ] `vite-plugin-md` 설치 및 `vite.config.ts` 설정
+- [ ] `src/router/index.ts` 에 `/logbook/:slug` 라우트 추가
+- [ ] `src/views/LogbookDetailView.vue` 생성 (위 디자인 시스템 준수)
+- [ ] `src/views/LogbookView.vue` 카드에 상세 페이지 링크 연결
+- [ ] (선택) `src/posts/index.ts` 로 포스트 메타데이터 관리
+
+### 현재 포스트
+- `src/posts/game-terms-init-refactor.md`
+  - 내용: 게임 약관 초기화 로직 리팩토링 (Orchestrator Pattern + Strategy Pattern)
+  - MR !427: 416줄 단일 함수 → Context Pattern + 4개 Service 분리
+  - MR !447: 200줄 switch-case → Strategy + Factory Pattern으로 분리
