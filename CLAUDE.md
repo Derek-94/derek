@@ -93,3 +93,4 @@ Logbook에 MD 기반 상세 페이지를 추가한다.
   - 내용: 게임 약관 초기화 로직 리팩토링 (Orchestrator Pattern + Strategy Pattern)
   - MR !427: 416줄 단일 함수 → Context Pattern + 4개 Service 분리
   - MR !447: 200줄 switch-case → Strategy + Factory Pattern으로 분리
+  - MR !458: Factory Eager → Lazy Initialization + Singleton 개선
