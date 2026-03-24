@@ -4,6 +4,8 @@ export interface LogPlainEntry {
   year: string
   /** content 가 왼쪽이면 'left', 오른쪽이면 'right' */
   side: 'left' | 'right'
+  /** true면 연도 숫자 컬럼을 렌더링하지 않음 (같은 year 엔트리가 연속될 때 사용) */
+  hideYear?: boolean
   icon: string
   label: string
   title: string
@@ -12,6 +14,8 @@ export interface LogPlainEntry {
   commit?: { icon: string; text: string }
   /** 태그 배지 목록 (선택) */
   tags?: string[]
+  /** desc 아래에 렌더링할 포스트 카드 목록 (선택) */
+  cards?: LogGridCard[]
 }
 
 // ── Progress (2025) ───────────────────────────────────────────

@@ -49,21 +49,30 @@ const logEntries: LogEntry[] = [
     ],
   },
 
-  // ── 2025: progress, content RIGHT ──────────────────────────
+  // ── 2025: plain (Creators Site Launch) + embedded post cards ──
   {
-    type:     'progress',
+    type:     'plain',
     year:     '2025',
     side:     'right',
     hideYear: true,
-    icon:  'rocket_launch',
-    label: 'Platform Deployment',
-    title: 'Creators Site Launch',
-    desc:  'Implementation of real-time Redis analytics and a complete Settings Page refactor using specialized UI components.',
-    progress: {
-      icon:  'monitoring',
-      label: 'Real-time Analytics Engine',
-      value: 94,
-    },
+    icon:     'rocket_launch',
+    label:    'Platform Deployment',
+    title:    'Creators Site Launch',
+    desc:     'New project launch — monorepo setup, Storybook integration with an internal design system, and resolving Nuxt3 Auto Imports compatibility from scratch.',
+    cards: [
+      {
+        category: 'Setup · MR !23 !28',
+        title:    '모노레포에 Storybook 세팅하기',
+        desc:     'PostCSS 독립 환경 문제, Tailwind v3 버전 고정, 사내 디자인 시스템 stove-ui 연동까지.',
+        slug:     'storybook-monorepo-setup',
+      },
+      {
+        category: 'Setup · MR !86 !91',
+        title:    'Nuxt3 Auto Imports를 Storybook에서',
+        desc:     '4가지 접근 시도 끝에 모노레포 루트 설정을 포기하게 된 결론.',
+        slug:     'storybook-nuxt-auto-imports',
+      },
+    ],
   },
 
   // ── 2024: grid, content LEFT ───────────────────────────────

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
 import type { LogPlainEntry } from '../../types/logbook'
 
 withDefaults(defineProps<{ entry: LogPlainEntry; last?: boolean }>(), { last: false })
@@ -10,7 +11,7 @@ withDefaults(defineProps<{ entry: LogPlainEntry; last?: boolean }>(), { last: fa
 
       <!-- Year LEFT (side === 'right' 일 때) -->
       <div v-if="entry.side === 'right'" class="hidden md:flex md:pr-16 flex-row-reverse items-baseline gap-4">
-        <span class="text-7xl md:text-9xl font-black text-on-surface/10 tracking-tighter leading-none select-none group-hover:text-on-surface/30 transition-opacity">
+        <span v-if="!entry.hideYear" class="text-7xl md:text-9xl font-black text-on-surface/10 tracking-tighter leading-none select-none group-hover:text-on-surface/30 transition-opacity">
           {{ entry.year }}
         </span>
       </div>
@@ -21,7 +22,7 @@ withDefaults(defineProps<{ entry: LogPlainEntry; last?: boolean }>(), { last: fa
           ? 'md:text-right md:pr-16 ml-12 md:ml-0'
           : 'md:pl-16 ml-12 md:ml-0'"
       >
-        <span class="md:hidden font-black text-4xl tracking-tighter text-on-surface/40 mb-3 block">{{ entry.year }}</span>
+        <span v-if="!entry.hideYear" class="md:hidden font-black text-4xl tracking-tighter text-on-surface/40 mb-3 block">{{ entry.year }}</span>
         <div
           class="inline-flex items-center gap-2 mb-2"
           :class="{ 'md:flex-row-reverse': entry.side === 'left' }"
@@ -38,6 +39,35 @@ withDefaults(defineProps<{ entry: LogPlainEntry; last?: boolean }>(), { last: fa
         >
           {{ entry.desc }}
         </p>
+        <!-- Post cards -->
+        <div v-if="entry.cards?.length" class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mb-6">
+          <RouterLink
+            v-for="card in entry.cards.filter(c => c.slug)"
+            :key="card.title"
+            :to="`/logbook/${card.slug}`"
+            class="group/card relative p-5 rounded-lg border-l-2 border-primary/40 hover:border-primary transition-all cursor-pointer block text-left"
+            style="background: rgba(32,31,31,0.4); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.05); border-right: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);"
+          >
+            <div class="font-mono text-[9px] text-primary mb-2 uppercase tracking-tighter">{{ card.category }}</div>
+            <h4 class="text-sm font-bold uppercase mb-2 tracking-tight group-hover/card:text-primary transition-colors">{{ card.title }}</h4>
+            <p class="text-[11px] text-on-surface-variant leading-tight mb-4">{{ card.desc }}</p>
+            <div class="flex items-center gap-1 font-mono text-[9px] text-primary/60 group-hover/card:text-primary transition-colors uppercase tracking-widest">
+              <span>Read Post</span>
+              <span class="group-hover/card:translate-x-1 transition-transform inline-block">→</span>
+            </div>
+          </RouterLink>
+          <div
+            v-for="card in entry.cards.filter(c => !c.slug)"
+            :key="card.title"
+            class="p-5 rounded-lg border-l-2 border-primary/40 transition-all"
+            style="background: rgba(32,31,31,0.4); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.05); border-right: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);"
+          >
+            <div class="font-mono text-[9px] text-primary mb-2 uppercase tracking-tighter">{{ card.category }}</div>
+            <h4 class="text-sm font-bold uppercase mb-2 tracking-tight">{{ card.title }}</h4>
+            <p class="text-[11px] text-on-surface-variant leading-tight">{{ card.desc }}</p>
+          </div>
+        </div>
+
         <!-- Commit badge -->
         <div
           v-if="entry.commit"
