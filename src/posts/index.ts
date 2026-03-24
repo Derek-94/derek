@@ -2,7 +2,7 @@ export interface PostMeta {
   slug: string
   title: string
   date: string
-  mrs: string[]
+  mrs?: string[]
   techStack: string[]
   desc: string
 }
