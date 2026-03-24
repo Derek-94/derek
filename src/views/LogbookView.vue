@@ -33,6 +33,10 @@ const logEntries: LogEntry[] = [
     type: 'grid',
     year: '2025',
     side: 'right',
+    icon:  'construction',
+    label: 'Refactoring',
+    title: '패턴 기반 리팩토링',
+    desc:  '레거시 코드의 복잡도를 패턴으로 제거한 리팩토링 기록.',
     cards: [
       {
         category: 'Refactoring · MR !427 !447 !458',
@@ -57,8 +61,8 @@ const logEntries: LogEntry[] = [
     hideYear: true,
     icon:     'rocket_launch',
     label:    'Platform Deployment',
-    title:    'Creators Site Launch',
-    desc:     'New project launch — monorepo setup, Storybook integration with an internal design system, and resolving Nuxt3 Auto Imports compatibility from scratch.',
+    title:    '신규 서비스 런칭 & 초기 세팅',
+    desc:     '모노레포 환경에서 Storybook과 사내 디자인 시스템을 연동하며 겪은 구축 기록.',
     cards: [
       {
         category: 'Setup · MR !23 !28',

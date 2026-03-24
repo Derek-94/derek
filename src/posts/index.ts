@@ -12,8 +12,7 @@ export const posts: PostMeta[] = [
     slug: 'game-terms-init-refactor',
     title: '게임 약관 초기화 로직 리팩토링',
     date: '2025년 11월',
-    mrs: ['!427', '!447', '!458'],
-    techStack: ['TypeScript', 'RxJS', 'Angular'],
+    techStack: ['TypeScript', 'RxJS', 'Vue'],
     desc: '416줄 단일 함수를 Orchestrator + 4 Services로 분리하고, 200줄 switch-case를 Strategy + Factory Pattern으로 개선한 리팩토링.',
   },
   {

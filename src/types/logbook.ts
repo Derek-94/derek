@@ -55,6 +55,13 @@ export interface LogGridEntry {
   side: 'left' | 'right'
   /** true면 연도 숫자 컬럼을 렌더링하지 않음 */
   hideYear?: boolean
+  /** 아이콘 + 라벨 뱃지 (선택) */
+  icon?: string
+  label?: string
+  /** 섹션 타이틀 (선택) */
+  title?: string
+  /** 섹션 설명 (선택) */
+  desc?: string
   cards: LogGridCard[]
 }
 

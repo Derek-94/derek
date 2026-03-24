@@ -23,6 +23,14 @@ withDefaults(defineProps<{ entry: LogGridEntry; last?: boolean }>(), { last: fal
           : 'md:pl-16 ml-12 md:ml-0'"
       >
         <span v-if="!entry.hideYear" class="md:hidden font-black text-4xl tracking-tighter text-on-surface/40 mb-3 block">{{ entry.year }}</span>
+        <div v-if="entry.title" class="mb-6">
+          <div v-if="entry.icon || entry.label" class="inline-flex items-center gap-2 mb-2">
+            <span v-if="entry.icon" class="material-symbols-outlined text-primary text-sm">{{ entry.icon }}</span>
+            <span v-if="entry.label" class="font-mono text-primary text-xs tracking-widest uppercase font-bold">{{ entry.label }}</span>
+          </div>
+          <h3 class="text-3xl font-bold tracking-tight mb-2 group-hover:text-primary transition-colors">{{ entry.title }}</h3>
+          <p v-if="entry.desc" class="text-on-surface-variant text-sm leading-relaxed">{{ entry.desc }}</p>
+        </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
           <!-- 클릭 가능한 포스트 카드 (slug 있음) -->
           <RouterLink

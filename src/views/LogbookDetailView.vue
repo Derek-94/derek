@@ -47,18 +47,15 @@ watch(slug, (s) => {
         <h1 class="font-sans font-black tracking-tighter text-4xl md:text-6xl leading-none mb-10">
           {{ postMeta.title }}
         </h1>
-        <div class="flex flex-wrap items-center gap-3">
-          <span
-            v-for="mr in postMeta.mrs"
-            :key="mr"
-            class="font-mono text-xs bg-surface-container-high border border-outline-variant/20 px-3 py-1.5 rounded text-tertiary"
-          >{{ mr }}</span>
-          <span class="font-mono text-xs text-on-surface-variant/50 px-1">{{ postMeta.date }}</span>
-          <span
-            v-for="tech in postMeta.techStack"
-            :key="tech"
-            class="font-mono text-xs bg-surface-container border border-outline-variant/20 px-3 py-1.5 rounded text-on-surface-variant uppercase"
-          >{{ tech }}</span>
+        <div class="flex items-center justify-between gap-4">
+          <div class="flex flex-wrap items-center gap-2">
+            <span
+              v-for="tech in postMeta.techStack"
+              :key="tech"
+              class="font-mono text-xs bg-surface-container border border-outline-variant/20 px-3 py-1.5 rounded text-on-surface-variant uppercase"
+            >{{ tech }}</span>
+          </div>
+          <span class="font-mono text-xs text-on-surface-variant/50 shrink-0">{{ postMeta.date }}</span>
         </div>
       </header>
 

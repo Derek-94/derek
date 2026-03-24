@@ -1,7 +1,7 @@
 # Nuxt3 Auto Imports를 Storybook에서 — 4번의 시도와 결론
 
 > **작업 기간**: 2025년 3월
-> **관련 MR**: !86, !91
+>
 > **기술 스택**: Nuxt 3, Storybook, TypeScript, stove-ui
 
 ---
@@ -207,7 +207,7 @@ viteFinal: async (config) => {
 
 ---
 
-## MR !91 — 마무리 설정
+## 마무리 설정
 
 Auto Imports 문제가 해결된 후, Storybook 사용성을 높이기 위한 추가 설정을 진행했습니다.
 

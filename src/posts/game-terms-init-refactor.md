@@ -1,15 +1,16 @@
 # 게임 약관 초기화 로직 리팩토링
 
 > **작업 기간**: 2025년 11월
-> **관련 MR**: !427, !447, !458
-> **기술 스택**: TypeScript, RxJS, Angular (Vue)
+>
+> **기술 스택**: TypeScript, RxJS, Vue
 
 ---
 
 ## 배경
 
 게임 약관 동의 페이지의 초기화 로직이 하나의 파일에 집중되어 있었습니다.
-오랜 기간 기능이 추가되면서 단일 함수가 **416줄**, 에러 핸들러가 **200줄**까지 커진 상태였고,
+
+오랜 기간 기능이 추가되면서 단일 함수가 **417줄**, 에러 핸들러가 **200줄**까지 커진 상태였고,
 신규 요구사항이 생길 때마다 기존 코드를 직접 수정해야 하는 구조였습니다.
 
 ---
@@ -60,7 +61,7 @@ switch (code) {
 
 ## 해결
 
-### MR !427 — Orchestrator Pattern + Context Pattern
+### Orchestrator Pattern + Context Pattern
 
 초기화 함수를 역할별로 4개의 Service로 분리하고, Orchestrator가 전체 흐름을 조율하는 구조로 변경했습니다.
 
@@ -129,7 +130,7 @@ tap(context => { /* 부수효과 */ })
 
 ---
 
-### MR !447 — Strategy Pattern + Factory Pattern
+### Strategy Pattern + Factory Pattern
 
 에러 핸들러를 각 코드별 독립 클래스로 분리하고, Factory가 적절한 핸들러를 선택하는 구조로 변경했습니다.
 
@@ -169,9 +170,10 @@ const errorMsg = ErrorMessageUtil.getErrorAlertMsg(serverCode, this.deps.$trans)
 
 ---
 
-### MR !458 — Factory 개선: Lazy Initialization + Singleton
+### Factory 개선: Lazy Initialization + Singleton
 
 !447에서 만든 Factory가 생성자에서 17개 핸들러를 모두 즉시 생성하는 문제가 있었습니다.
+
 실제로는 한 번의 초기화 흐름에서 하나의 에러 코드만 처리되는데, 나머지 16개 인스턴스는 불필요하게 메모리를 점유했습니다.
 
 **문제: Eager Initialization**
