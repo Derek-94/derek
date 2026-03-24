@@ -139,7 +139,7 @@ export class InitResultHandlerFactory {
     constructor(deps: HandlerDependencies) {
         this.handlers = new Map([
             [IntegrationInitCode.AbnormalAccess, new AbnormalAccessHandler(deps)],
-            [IntegrationInitCode.NotLogin,        new NotLoginHandler(deps)],
+            [IntegrationInitCode.NotLogin, new NotLoginHandler(deps)],
             [IntegrationInitCode.FailGetGameInfo, new FailGetGameInfoHandler(deps)],
             // ...
         ]);
@@ -181,7 +181,7 @@ const errorMsg = ErrorMessageUtil.getErrorAlertMsg(serverCode, this.deps.$trans)
 constructor(deps: HandlerDependencies) {
     this.handlers = new Map([
         [IntegrationInitCode.AbnormalAccess, new AbnormalAccessHandler(deps)],
-        [IntegrationInitCode.NotLogin,        new NotLoginHandler(deps)],
+        [IntegrationInitCode.NotLogin, new NotLoginHandler(deps)],
         // ... 17개 모두 생성
     ]);
 }
@@ -198,7 +198,7 @@ export class InitResultHandlerFactory {
 
     private readonly handlerFactories = new Map<IntegrationInitCode, HandlerFactory>([
         [IntegrationInitCode.AbnormalAccess, (deps) => new AbnormalAccessHandler(deps)],
-        [IntegrationInitCode.NotLogin,        (deps) => new NotLoginHandler(deps)],
+        [IntegrationInitCode.NotLogin, (deps) => new NotLoginHandler(deps)],
         // ... factory 함수만 등록
     ]);
 
