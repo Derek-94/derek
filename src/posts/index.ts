@@ -9,6 +9,13 @@ export interface PostMeta {
 
 export const posts: PostMeta[] = [
   {
+    slug: 'kafun-no-kokyuu',
+    title: '花粉の呼吸 — 꽃가루 + 날씨 코디 추천 앱',
+    date: '2026년 3월',
+    techStack: ['Next.js 16', 'TypeScript', 'Tailwind CSS v4', 'Open-Meteo', 'Google Pollen API'],
+    desc: '일본 꽃가루 시즌에 착안해 꽃가루 레벨과 기온을 조합한 코디 추천 모바일 웹앱. Google Pollen API · Open-Meteo 연동, 47도도부현 위치 선택기, 동적 OG 이미지까지.',
+  },
+  {
     slug: 'game-terms-init-refactor',
     title: '게임 약관 초기화 로직 리팩토링',
     date: '2025년 11월',
