@@ -9,13 +9,21 @@ defineProps<{ project: Project }>()
     class="group bg-surface-container-high rounded-2xl overflow-hidden hover:bg-surface-container-highest transition-colors cursor-pointer"
     :class="project.size === 'large' ? 'md:col-span-2 lg:col-span-1' : ''"
   >
-    <!-- Image placeholder -->
+    <!-- Thumbnail -->
     <div
       class="w-full overflow-hidden"
       :class="project.size === 'large' ? 'h-52 lg:h-64' : 'h-44 lg:h-52'"
     >
-      <div class="w-full h-full bg-gradient-to-br from-primary/10 via-surface-container to-tertiary/10 flex items-center justify-center relative">
-        <!-- Decorative grid -->
+      <img
+        v-if="project.thumbnail"
+        :src="project.thumbnail"
+        :alt="project.title"
+        class="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
+      />
+      <div
+        v-else
+        class="w-full h-full bg-gradient-to-br from-primary/10 via-surface-container to-tertiary/10 flex items-center justify-center relative"
+      >
         <div
           class="absolute inset-0 opacity-20"
           style="background-image: linear-gradient(rgba(192,193,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(192,193,255,0.15) 1px, transparent 1px); background-size: 32px 32px;"
@@ -53,7 +61,20 @@ defineProps<{ project: Project }>()
       </div>
 
       <!-- CTA -->
-      <button class="flex items-center gap-2 text-primary font-mono text-sm group-hover:gap-3 transition-all">
+      <a
+        v-if="project.ctaUrl"
+        :href="project.ctaUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 text-primary font-mono text-sm group-hover:gap-3 transition-all"
+      >
+        {{ project.cta }}
+        <span class="material-symbols-outlined text-base">{{ project.ctaIcon }}</span>
+      </a>
+      <button
+        v-else
+        class="flex items-center gap-2 text-primary font-mono text-sm group-hover:gap-3 transition-all"
+      >
         {{ project.cta }}
         <span class="material-symbols-outlined text-base">{{ project.ctaIcon }}</span>
       </button>

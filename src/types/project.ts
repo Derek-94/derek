@@ -23,4 +23,8 @@ export interface Project {
    * - `'normal'` : 1열 차지,               thumbnail h-44 lg:h-52
    */
   size: 'large' | 'normal'
+  /** public/thumbnails/ 경로의 이미지. 없으면 그라디언트 placeholder */
+  thumbnail?: string
+  /** CTA 버튼 클릭 시 이동할 URL */
+  ctaUrl?: string
 }

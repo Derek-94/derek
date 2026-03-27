@@ -2,62 +2,7 @@
 import AppNav from '../components/AppNav.vue'
 import AppFooter from '../components/AppFooter.vue'
 import ProjectCard from '../components/ProjectCard.vue'
-import type { Project } from '../types/project'
-
-const projects: Project[] = [
-  {
-    id: 1,
-    title: 'my-profile',
-    tag: 'Data Visualization',
-    year: '2026',
-    category: 'new-build',
-    stack: ['React', 'Tailwind', 'D3.js'],
-    desc: 'Interactive data visualization dashboard with custom D3 rendering pipeline. Reduced unnecessary re-renders by 40% through virtualization and memoization strategies.',
-    metric: '↓ 40% re-renders',
-    cta: 'View Technical Breakdown',
-    ctaIcon: 'arrow_right_alt',
-    size: 'large',
-  },
-  {
-    id: 2,
-    title: 'creators site',
-    tag: 'Performance',
-    year: '2025',
-    category: 'refactor',
-    stack: ['Next.js', 'TypeScript'],
-    desc: 'Domain migration and performance overhaul supporting 50,000+ dynamic routes. Implemented ISR and edge caching to achieve sub-100ms TTFB globally.',
-    metric: '50,000+ dynamic routes',
-    cta: 'View Live',
-    ctaIcon: 'open_in_new',
-    size: 'normal',
-  },
-  {
-    id: 3,
-    title: 'js-bridge Renewal',
-    tag: 'Systems',
-    year: '2026',
-    category: 'refactor',
-    stack: ['Node.js', 'PostgreSQL', 'TypeScript'],
-    desc: 'Legacy system migration replacing a brittle native-JS bridge. Reduced cross-layer latency by 65% through batched IPC and a custom serialization protocol.',
-    metric: '↓ 65% latency',
-    cta: 'Explore Source',
-    ctaIcon: 'code',
-    size: 'normal',
-  },
-  {
-    id: 4,
-    title: 'Atmospheric UI Engine',
-    tag: 'Architecture',
-    year: '2024',
-    category: 'new-build',
-    stack: ['React', 'WebGL', 'Motion'],
-    desc: 'Physics-based animation engine for high-fidelity portfolio interfaces. Non-linear spring interpolation with GPU-accelerated compositing layer.',
-    metric: '60fps guaranteed',
-    cta: 'Explore Source',
-    ctaIcon: 'arrow_right_alt',
-    size: 'large',
-  },
-]
+import { projects } from '../data/projects'
 
 const challenges = [
   {
