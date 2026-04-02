@@ -1,16 +1,15 @@
 # 게임 약관 초기화 로직 리팩토링
 
 > **작업 기간**: 2025년 11월
->
-> **기술 스택**: TypeScript, RxJS, Vue
+> **관련 MR**: !427, !447
+> **기술 스택**: TypeScript, RxJS, Angular (Vue)
 
 ---
 
 ## 배경
 
 게임 약관 동의 페이지의 초기화 로직이 하나의 파일에 집중되어 있었습니다.
-
-오랜 기간 기능이 추가되면서 단일 함수가 **417줄**, 에러 핸들러가 **200줄**까지 커진 상태였고,
+오랜 기간 기능이 추가되면서 단일 함수가 **416줄**, 에러 핸들러가 **200줄**까지 커진 상태였고,
 신규 요구사항이 생길 때마다 기존 코드를 직접 수정해야 하는 구조였습니다.
 
 ---
@@ -61,7 +60,7 @@ switch (code) {
 
 ## 해결
 
-### Orchestrator Pattern + Context Pattern
+### MR !427 — Orchestrator Pattern + Context Pattern
 
 초기화 함수를 역할별로 4개의 Service로 분리하고, Orchestrator가 전체 흐름을 조율하는 구조로 변경했습니다.
 
@@ -130,7 +129,7 @@ tap(context => { /* 부수효과 */ })
 
 ---
 
-### Strategy Pattern + Factory Pattern
+### MR !447 — Strategy Pattern + Factory Pattern
 
 에러 핸들러를 각 코드별 독립 클래스로 분리하고, Factory가 적절한 핸들러를 선택하는 구조로 변경했습니다.
 
@@ -140,7 +139,7 @@ export class InitResultHandlerFactory {
     constructor(deps: HandlerDependencies) {
         this.handlers = new Map([
             [IntegrationInitCode.AbnormalAccess, new AbnormalAccessHandler(deps)],
-            [IntegrationInitCode.NotLogin, new NotLoginHandler(deps)],
+            [IntegrationInitCode.NotLogin,        new NotLoginHandler(deps)],
             [IntegrationInitCode.FailGetGameInfo, new FailGetGameInfoHandler(deps)],
             // ...
         ]);
@@ -170,94 +169,19 @@ const errorMsg = ErrorMessageUtil.getErrorAlertMsg(serverCode, this.deps.$trans)
 
 ---
 
-### Factory 개선: Lazy Initialization + Singleton
-
-!447에서 만든 Factory가 생성자에서 17개 핸들러를 모두 즉시 생성하는 문제가 있었습니다.
-
-실제로는 한 번의 초기화 흐름에서 하나의 에러 코드만 처리되는데, 나머지 16개 인스턴스는 불필요하게 메모리를 점유했습니다.
-
-**문제: Eager Initialization**
-
-```typescript
-// AS-IS: 생성자에서 17개 핸들러 모두 즉시 생성
-constructor(deps: HandlerDependencies) {
-    this.handlers = new Map([
-        [IntegrationInitCode.AbnormalAccess, new AbnormalAccessHandler(deps)],
-        [IntegrationInitCode.NotLogin, new NotLoginHandler(deps)],
-        // ... 17개 모두 생성
-    ]);
-}
-```
-
-**해결: Lazy Initialization + Cache**
-
-```typescript
-// TO-BE: factory 함수만 등록, 필요할 때 생성 후 캐시
-type HandlerFactory = (deps: HandlerDependencies) => InitResultHandler;
-
-export class InitResultHandlerFactory {
-    private handlerCache: Map<IntegrationInitCode, InitResultHandler> = new Map();
-
-    private readonly handlerFactories = new Map<IntegrationInitCode, HandlerFactory>([
-        [IntegrationInitCode.AbnormalAccess, (deps) => new AbnormalAccessHandler(deps)],
-        [IntegrationInitCode.NotLogin, (deps) => new NotLoginHandler(deps)],
-        // ... factory 함수만 등록
-    ]);
-
-    constructor(private readonly deps: HandlerDependencies) {}
-
-    public getHandler(code: IntegrationInitCode): InitResultHandler {
-        const cached = this.handlerCache.get(code);
-        if (cached) return cached;
-
-        const factory = this.handlerFactories.get(code);
-        const handler = factory ? factory(this.deps) : new SuccessHandler(this.deps);
-
-        this.handlerCache.set(code, handler);
-        return handler;
-    }
-}
-```
-
-**Factory 자체도 컴포넌트 레벨 Singleton으로**
-
-```typescript
-// Main.ts — Factory를 한 번만 생성하고 재사용
-protected handlerFactory: InitResultHandlerFactory | null = null;
-
-this.subscribe(this.integrationInitService.gameTermsInitResult$, (result) => {
-    if (!this.handlerFactory) {
-        this.handlerFactory = this.createHandlerFactory(); // 첫 번째 호출 시만 생성
-    }
-    this.handlerFactory.getHandler(result.code).handle(params);
-});
-
-protected beforeDestroy(): void {
-    this.handlerFactory = null; // 컴포넌트 파괴 시 참조 해제
-}
-```
-
-이 구조 덕분에 Factory는 컴포넌트당 1개, Handler는 실제 사용된 코드에 대해서만 생성됩니다.
-
----
-
 ## 결과
 
-| 항목 | 최초 | 최종 |
-|------|------|------|
+| 항목 | AS-IS | TO-BE |
+|------|-------|-------|
 | 초기화 함수 규모 | 단일 함수 416줄 | Orchestrator + 4 Services |
 | switchMap 중첩 | 6단계 | 없음 (단계별 operator 분리) |
 | 에러 핸들러 규모 | 단일 switch-case 200줄 | Handler 클래스 14개로 분리 |
 | 신규 케이스 추가 | 기존 함수 직접 수정 | Handler 클래스 추가 후 Factory 등록 |
-| Handler 인스턴스 생성 | 항상 17개 전부 | 실제 사용된 코드만 Lazy 생성 |
 | 테스트 가능성 | 어려움 (전체 의존성 필요) | 각 Service/Handler 독립 테스트 가능 |
 
 ---
 
 ## 배운 점
 
-**RxJS에서 Orchestrator Pattern**은 명시적인 단계별 파이프라인을 표현할 때 자연스럽게 맞아떨어집니다. 각 Operator가 Context를 받아 변환하고 다음 단계로 넘기는 구조 덕분에 전체 흐름을 선언적으로 읽을 수 있게 됩니다.
-
-**Strategy Pattern**은 분기 로직이 많고 각 케이스가 서로 독립적일 때 효과적입니다. switch-case를 클래스로 옮기는 것 자체가 목적이 아니라, 각 케이스가 독립적으로 테스트되고 수정될 수 있다는 점이 핵심이었습니다.
-
-**Lazy Initialization**은 단순히 성능 최적화 기법이 아니라, "언제 객체가 필요한가"를 명확히 하는 설계 결정입니다. 리팩토링 이후에도 계속 개선 포인트를 찾을 수 있었던 건, 패턴이 명확해지면서 불필요한 부분이 눈에 잘 띄게 됐기 때문입니다.
+- **RxJS에서 Orchestrator Pattern**은 명시적인 단계별 파이프라인을 표현할 때 자연스럽게 맞아떨어집니다. 각 Operator가 Context를 받아 변환하고 다음 단계로 넘기는 구조 덕분에 전체 흐름을 선언적으로 읽을 수 있게 됩니다.
+- **Strategy Pattern**은 분기 로직이 많고 각 케이스가 서로 독립적일 때 효과적입니다. switch-case를 클래스로 옮기는 것 자체가 목적이 아니라, 각 케이스가 독립적으로 테스트되고 수정될 수 있다는 점이 핵심이었습니다.
