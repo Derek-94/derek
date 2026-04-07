@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import type { LogPlainEntry } from '../../types/logbook'
+import type { LogListItem } from '../../types/logbook'
 
 withDefaults(defineProps<{ entry: LogPlainEntry; last?: boolean }>(), { last: false })
 </script>
@@ -66,6 +67,36 @@ withDefaults(defineProps<{ entry: LogPlainEntry; last?: boolean }>(), { last: fa
             <h4 class="text-sm font-bold uppercase mb-2 tracking-tight">{{ card.title }}</h4>
             <p class="text-[11px] text-on-surface-variant leading-tight">{{ card.desc }}</p>
           </div>
+        </div>
+
+        <!-- List items -->
+        <div v-if="entry.items?.length" class="space-y-4 mb-6">
+          <component
+            :is="item.slug ? RouterLink : 'div'"
+            v-for="item in entry.items"
+            :key="item.title"
+            :to="item.slug ? `/logbook/${item.slug}` : undefined"
+            class="relative flex flex-col gap-1 py-2"
+            :class="[
+              entry.side === 'left' ? 'pr-6' : 'pl-6',
+              item.highlight
+                ? (entry.side === 'left' ? 'border-r-2 border-primary/50 py-4 bg-primary/5 rounded-l-lg' : 'border-l-2 border-primary/50 py-4 bg-primary/5 rounded-r-lg')
+                : (entry.side === 'left' ? 'border-r-2 border-outline-variant/30' : 'border-l-2 border-outline-variant/30'),
+              item.slug ? 'cursor-pointer hover:border-primary transition-colors group/item' : '',
+            ]"
+          >
+            <div
+              class="absolute w-2 h-2 rounded-full transition-colors"
+              :class="[
+                entry.side === 'left' ? 'right-[-5px]' : 'left-[-5px]',
+                item.highlight ? 'top-6 bg-primary' : 'top-4 bg-outline-variant',
+                item.slug ? 'group-hover/item:bg-primary' : '',
+              ]"
+            />
+            <span class="font-mono text-primary text-[10px] tracking-widest uppercase font-bold">{{ item.label }}</span>
+            <h4 class="text-lg font-bold tracking-tight" :class="{ 'group-hover/item:text-primary transition-colors': item.slug }">{{ item.title }}</h4>
+            <p class="text-on-surface-variant text-sm max-w-md whitespace-pre-line" :class="{ 'md:ml-auto': entry.side === 'left' }">{{ item.desc }}</p>
+          </component>
         </div>
 
         <!-- Commit badge -->

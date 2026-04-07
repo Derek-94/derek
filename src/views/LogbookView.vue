@@ -42,6 +42,26 @@ const logEntries: LogEntry[] = [
     title: 'js-bridge Renewal',
     desc:  'Complete modernization of the native bridge architecture for zero-latency cross-platform communication.',
     commit: { icon: 'commit', text: 'feat: core-bridge-v2' },
+    items: [
+      {
+        label: 'SDK Design · TypeScript',
+        title: '6개 디자인 패턴으로 멀티플랫폼 SDK 설계하기',
+        desc:  'Facade·Builder·Bridge·Strategy·Adapter·Registry 조합과 AbstractJSBridge requestId 매칭 메커니즘.',
+        slug:  'js-bridge-sdk-design',
+      },
+      {
+        label: 'Platform Integration · WebView',
+        title: '3개 플랫폼, 1개 API — 브릿지 통신 방식 설계',
+        desc:  'PCSDK·AOS·IOS의 서로 다른 통신 방식을\nAbstractJSBridge로 추상화한 과정.',
+        slug:  'js-bridge-platform-integration',
+      },
+      {
+        label: 'DX · Debugging',
+        title: 'DX를 설계한다 — BridgeLogger와 전역 디버그 객체',
+        desc:  'BridgeLogger와 simulateCallback으로\n웹-네이티브 디버깅 환경을 설계한 과정.',
+        slug:  'js-bridge-dx-improvement',
+      },
+    ],
   },
 
   // ── 2025: grid (refactoring posts), content RIGHT ──────────

@@ -9,6 +9,27 @@ export interface PostMeta {
 
 export const posts: PostMeta[] = [
   {
+    slug: 'js-bridge-dx-improvement',
+    title: 'DX를 설계한다 — BridgeLogger와 전역 디버그 객체',
+    date: '2026년 4월',
+    techStack: ['TypeScript', 'WebView2', 'Android WebView', 'iOS WKWebView'],
+    desc: '기능 완성 이후 웹-네이티브 디버깅 환경을 설계한 과정. BridgeLogger로 콘솔에서 요청/응답 흐름을 추적하고, simulateCallback으로 팀 간 책임 경계를 즉시 검증할 수 있게 한 전역 디버그 객체.',
+  },
+  {
+    slug: 'js-bridge-platform-integration',
+    title: '3개 플랫폼, 1개 API — 브릿지 통신 방식 설계',
+    date: '2026년 4월',
+    techStack: ['TypeScript', 'WebView2', 'Android WebView', 'iOS WKWebView'],
+    desc: 'PCSDK·AOS·IOS의 서로 다른 통신 방식(postMessage/invoke/messageHandlers)을 AbstractJSBridge로 추상화하고, Self-registration 패턴으로 플랫폼을 확장 가능하게 설계한 과정.',
+  },
+  {
+    slug: 'js-bridge-sdk-design',
+    title: '6개 디자인 패턴으로 멀티플랫폼 TypeScript SDK 설계하기',
+    date: '2026년 4월',
+    techStack: ['TypeScript', 'WebView2', 'Android WebView', 'iOS WKWebView'],
+    desc: 'Facade·Builder·Bridge·Strategy·Adapter·Registry 6개 패턴을 조합해 멀티플랫폼 브릿지 SDK를 설계한 과정. requestId 기반 pending Map으로 비동기 요청-응답을 매칭하는 AbstractJSBridge 메커니즘 포함.',
+  },
+  {
     slug: 'kafun-no-kokyuu',
     title: '花粉の呼吸 — 꽃가루 + 날씨 코디 추천 앱',
     date: '2026년 3월',

@@ -35,10 +35,11 @@ withDefaults(defineProps<{ entry: LogListEntry; last?: boolean }>(), { last: fal
             ]"
           >
             <div
-              class="absolute w-2 h-2 rounded-full"
+              class="absolute w-2 h-2 rounded-full transition-colors"
               :class="[
                 entry.side === 'left' ? 'right-[-5px]' : 'left-[-5px]',
                 item.highlight ? 'top-6 bg-primary' : 'top-4 bg-outline-variant',
+                item.slug ? 'group-hover/item:bg-primary' : '',
               ]"
             />
             <span class="font-mono text-primary text-[10px] tracking-widest uppercase font-bold">{{ item.label }}</span>

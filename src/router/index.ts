@@ -2,7 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 export const router = createRouter({
   history: createWebHistory(),
-  scrollBehavior: () => ({ top: 0, behavior: 'smooth' }),
+  scrollBehavior: (_to, _from, savedPosition) => {
+    if (savedPosition) return savedPosition
+    return { top: 0, behavior: 'smooth' }
+  },
   routes: [
     {
       path: '/',

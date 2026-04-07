@@ -16,6 +16,8 @@ export interface LogPlainEntry {
   tags?: string[]
   /** desc 아래에 렌더링할 포스트 카드 목록 (선택) */
   cards?: LogGridCard[]
+  /** desc 아래에 렌더링할 리스트 항목 (선택) */
+  items?: LogListItem[]
 }
 
 // ── Progress (2025) ───────────────────────────────────────────

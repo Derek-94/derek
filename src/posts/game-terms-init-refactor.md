@@ -183,5 +183,6 @@ const errorMsg = ErrorMessageUtil.getErrorAlertMsg(serverCode, this.deps.$trans)
 
 ## 배운 점
 
-- **RxJS에서 Orchestrator Pattern**은 명시적인 단계별 파이프라인을 표현할 때 자연스럽게 맞아떨어집니다. 각 Operator가 Context를 받아 변환하고 다음 단계로 넘기는 구조 덕분에 전체 흐름을 선언적으로 읽을 수 있게 됩니다.
-- **Strategy Pattern**은 분기 로직이 많고 각 케이스가 서로 독립적일 때 효과적입니다. switch-case를 클래스로 옮기는 것 자체가 목적이 아니라, 각 케이스가 독립적으로 테스트되고 수정될 수 있다는 점이 핵심이었습니다.
+**RxJS에서 Orchestrator Pattern은 명시적인 단계별 파이프라인을 표현할 때 자연스럽게 맞아떨어집니다.** 각 Operator가 Context를 받아 변환하고 다음 단계로 넘기는 구조 덕분에 전체 흐름을 선언적으로 읽을 수 있게 됩니다.
+
+**Strategy Pattern은 분기 로직이 많고 각 케이스가 서로 독립적일 때 효과적입니다.** switch-case를 클래스로 옮기는 것 자체가 목적이 아니라, 각 케이스가 독립적으로 테스트되고 수정될 수 있다는 점이 핵심이었습니다.
