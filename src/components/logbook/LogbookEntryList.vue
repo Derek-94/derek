@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
 import type { LogListEntry } from '../../types/logbook'
 
 withDefaults(defineProps<{ entry: LogListEntry; last?: boolean }>(), { last: false })
@@ -16,24 +17,33 @@ withDefaults(defineProps<{ entry: LogListEntry; last?: boolean }>(), { last: fal
       </div>
 
       <!-- List -->
-      <div :class="entry.side === 'left' ? 'md:pr-16 ml-12 md:ml-0' : 'md:pl-16 ml-12 md:ml-0'">
+      <div :class="entry.side === 'left' ? 'md:text-right md:pr-16 ml-12 md:ml-0' : 'md:pl-16 ml-12 md:ml-0'">
         <span class="md:hidden font-black text-4xl tracking-tighter text-on-surface/40 mb-3 block">{{ entry.year }}</span>
         <div class="space-y-6">
-          <div
+          <component
+            :is="item.slug ? RouterLink : 'div'"
             v-for="item in entry.items"
             :key="item.title"
-            class="relative flex flex-col gap-1 pl-6 py-2"
-            :class="item.highlight
-              ? 'border-l-2 border-primary/50 py-4 bg-primary/5 rounded-r-lg'
-              : 'border-l-2 border-outline-variant/30'"
+            :to="item.slug ? `/logbook/${item.slug}` : undefined"
+            class="relative flex flex-col gap-1 py-2"
+            :class="[
+              entry.side === 'left' ? 'pr-6' : 'pl-6',
+              item.highlight
+                ? (entry.side === 'left' ? 'border-r-2 border-primary/50 py-4 bg-primary/5 rounded-l-lg' : 'border-l-2 border-primary/50 py-4 bg-primary/5 rounded-r-lg')
+                : (entry.side === 'left' ? 'border-r-2 border-outline-variant/30' : 'border-l-2 border-outline-variant/30'),
+              item.slug ? 'cursor-pointer hover:border-primary transition-colors group/item' : '',
+            ]"
           >
             <div
-              class="absolute left-[-5px] w-2 h-2 rounded-full"
-              :class="[item.highlight ? 'top-6 bg-primary' : 'top-4 bg-outline-variant']"
+              class="absolute w-2 h-2 rounded-full"
+              :class="[
+                entry.side === 'left' ? 'right-[-5px]' : 'left-[-5px]',
+                item.highlight ? 'top-6 bg-primary' : 'top-4 bg-outline-variant',
+              ]"
             />
             <span class="font-mono text-primary text-[10px] tracking-widest uppercase font-bold">{{ item.label }}</span>
-            <h3 class="text-2xl font-bold tracking-tight">{{ item.title }}</h3>
-            <p class="text-on-surface-variant text-sm max-w-md">{{ item.desc }}</p>
+            <h3 class="text-2xl font-bold tracking-tight" :class="{ 'group-hover/item:text-primary transition-colors': item.slug }">{{ item.title }}</h3>
+            <p class="text-on-surface-variant text-sm max-w-md" :class="{ 'md:ml-auto': entry.side === 'left' }">{{ item.desc }}</p>
             <!-- Terminal snippet (highlight 항목 전용) -->
             <div
               v-if="item.terminal"
@@ -45,7 +55,7 @@ withDefaults(defineProps<{ entry: LogListEntry; last?: boolean }>(), { last: fal
                 <span class="text-on-surface-variant">{{ item.terminal.command }}</span>
               </div>
             </div>
-          </div>
+          </component>
         </div>
       </div>
 

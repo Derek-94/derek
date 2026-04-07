@@ -100,7 +100,7 @@ withDefaults(defineProps<{ entry: LogPlainEntry; last?: boolean }>(), { last: fa
 
       <!-- Year RIGHT (side === 'left' 일 때) -->
       <div v-if="entry.side === 'left'" class="hidden md:flex md:pl-16 items-baseline gap-4">
-        <span class="text-7xl md:text-9xl font-black text-on-surface/10 tracking-tighter leading-none select-none group-hover:text-on-surface/30 transition-opacity">
+        <span v-if="!entry.hideYear" class="text-7xl md:text-9xl font-black text-on-surface/10 tracking-tighter leading-none select-none group-hover:text-on-surface/30 transition-opacity">
           {{ entry.year }}
         </span>
       </div>

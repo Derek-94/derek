@@ -70,6 +70,8 @@ export interface LogListItem {
   label: string
   title: string
   desc: string
+  /** 있으면 클릭 가능한 링크 항목으로 렌더링 */
+  slug?: string
   /**
    * true → border-primary/50 + bg-primary/5 하이라이트 스타일
    */

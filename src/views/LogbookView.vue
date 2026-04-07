@@ -16,11 +16,27 @@ const header = {
 
 // ─── TIMELINE ENTRIES ──────────────────────────────────────────
 const logEntries: LogEntry[] = [
+  // ── 2026: kafun-no-kokyuu, content LEFT ────────────────────
+  {
+    type: 'list',
+    year: '2026',
+    side: 'left',
+    items: [
+      {
+        label: 'Side Project · Next.js 16',
+        title: '花粉の呼吸 — 꽃가루 × 코디 추천 앱',
+        desc:  '꽃가루 알레르기 인구 절반의 나라 일본을 위해, 스기·히노키 꽃가루 지수와 기온을 결합해 마스크 착용 여부부터 코디까지 제안하는 모바일 웹앱.',
+        slug:  'kafun-no-kokyuu',
+      },
+    ],
+  },
+
   // ── 2026: plain, content LEFT ──────────────────────────────
   {
-    type:  'plain',
-    year:  '2026',
-    side:  'left',
+    type:     'plain',
+    year:     '2026',
+    side:     'left',
+    hideYear: true,
     icon:  'terminal',
     label: 'Planned Refactoring',
     title: 'js-bridge Renewal',
