@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import type { LogPlainEntry } from '../../types/logbook'
-import type { LogListItem } from '../../types/logbook'
 
 withDefaults(defineProps<{ entry: LogPlainEntry; last?: boolean }>(), { last: false })
 </script>
