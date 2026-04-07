@@ -39,8 +39,8 @@ const logEntries: LogEntry[] = [
     hideYear: true,
     icon:  'terminal',
     label: 'Planned Refactoring',
-    title: 'js-bridge Renewal',
-    desc:  'Complete modernization of the native bridge architecture for zero-latency cross-platform communication.',
+    title: 'JS 브릿지 v2 — 멀티플랫폼 SDK 재설계',
+    desc:  '3개 플랫폼(PCSDK·AOS·IOS)의 브릿지 통신을 단일 API로 추상화한 TypeScript SDK 재설계 작업.',
     commit: { icon: 'commit', text: 'feat: core-bridge-v2' },
     items: [
       {
